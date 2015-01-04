@@ -1,0 +1,30 @@
+{
+  "name": "Heap",
+  "description": "Read and remember webpages",
+  "version": "0.1",
+  "manifest_version": 2,
+  "background": {
+    "scripts": ["./assets/js/jquery-2.1.3.min.js", "background.js"]
+  },
+  "permissions": [
+    "http://192.168.62.127/",
+	"tabs",
+	"webNavigation"
+  ],
+  "commands": {
+    "_execute_browser_action": {
+	  "suggested_key": {
+	    "default": "Alt+W",
+	    "windows": "Alt+W",
+	    "mac": "Alt+W",
+	    "linux": "Alt+W"
+	  }
+	}
+  },
+  "chrome_url_overrides" : {
+    "newtab": "redirect.html"
+  },
+  "browser_action": {
+    "19": "./assets/icons/logo.png"
+  }
+}
