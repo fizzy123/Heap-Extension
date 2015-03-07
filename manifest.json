@@ -1,13 +1,13 @@
 {
   "name": "Heap",
-  "description": "Read and remember webpages",
-  "version": "0.1",
+  "description": "Traverse the web",
+  "version": "0.4",
   "manifest_version": 2,
   "background": {
     "scripts": ["./assets/js/jquery-2.1.3.min.js", "background.js"]
   },
   "permissions": [
-    "http://192.168.62.127/",
+    "http://heap.nobr.me/",
 	"tabs",
 	"webNavigation"
   ],
