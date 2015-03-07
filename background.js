@@ -85,3 +85,9 @@ chrome.tabs.onActivated.addListener(function() {
 	checkUrl(tab[0].id, tab[0].url);
   });
 })
+
+chrome.windows.onFocusChanged.addListener(function() {
+  chrome.tabs.query({active:true, currentWindow:true}, function(tab) {
+	checkUrl(tab[0].id, tab[0].url);
+  });
+})
