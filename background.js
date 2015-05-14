@@ -91,11 +91,13 @@ chrome.tabs.onUpdated.addListener(function(tabId, data){
 chrome.tabs.onActivated.addListener(function() {
   chrome.tabs.query({active:true, currentWindow:true}, function(tabs) {
 	changeIcon(tabs[0])
+	checkUrl(tabs[0].id, tabs[0].url)
   });
 })
 
 chrome.windows.onFocusChanged.addListener(function() {
   chrome.tabs.query({active:true, currentWindow:true}, function(tabs) {
 	changeIcon(tabs[0])
+	checkUrl(tabs[0].id, tabs[0].url)
   });
 })
