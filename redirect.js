@@ -1,8 +1,8 @@
-$.get('https://nobr10-80.terminal.com/feed/redirect', function(res){
+$.get('http://heap.nobr.me/feed/redirect', function(res){
   if (res.url.slice(0,4) === 'http') {
-    chrome.runtime.sendMessage({pk: res.pk}); 
+    chrome.runtime.sendMessage({url: res.url}); 
 	window.location = res.url
   } else {
-     window.location = 'https://nobr10-80.terminal.com' + res.url;
+     window.location = 'http://heap.nobr.me' + res.url;
   }
 })

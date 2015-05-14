@@ -19,23 +19,22 @@ $.ajaxSetup({
 });
 
 chrome.runtime.onMessage.addListener(function(request, sender) {
-  if (request.pk) {
-    window.localStorage[sender.tab.id] = request.pk
+  if (request.url) {
+    window.localStorage[sender.tab.id] = request.url
   }
 })
 
 var extensionAction = function(){
   chrome.tabs.query({active:true, currentWindow:true}, function(tab){
-	$.get('https://nobr10-80.terminal.com/csrf/', function(res) {
-	  $.post('https://nobr10-80.terminal.com/feed/action/', 
-		     {pk:window.localStorage[tab[0].id],
-			  url: tab[0].url},
+	$.get('http://heap.nobr.me/csrf/', function(res) {
+	  $.post('http://heap.nobr.me/feed/action/', 
+		     {url: tab[0].url},
 		      function(res) {
 		if (res.url) {
 		  if (res.url.match(/^http/)) {
 			chrome.tabs.update({url: res.url});
 		  } else {
-			chrome.tabs.create({url:'https://nobr10-80.terminal.com' + res.url});
+			chrome.tabs.create({url:'http://heap.nobr.me' + res.url});
 		  }
 		}
 		checkUrl(tab[0].id, tab[0].url);
@@ -65,13 +64,13 @@ var changeIcon = function(tab) {
 }
 
 var checkUrl = function(tabId, url) {
-  $.get('https://nobr10-80.terminal.com/csrf/', function(res) {
+  $.get('http://heap.nobr.me/csrf/', function(res) {
 	csrftoken = res.match(/value=\'(.+)\'/)[1]
-	$.post('https://nobr10-80.terminal.com/feed/check_url/', 
+	$.post('http://heap.nobr.me/feed/check_url/', 
 			 {url: url},
 			 function(res) {
-	  if (res.pk) {
-		window.localStorage[tabId] = res.pk
+	  if (res.url) {
+		window.localStorage[tabId] = res.url
 		chrome.browserAction.setIcon({path: './assets/icons/check.png'})
 	  } else {
 		delete window.localStorage[tabId]
