@@ -1,0 +1,34 @@
+@import url(http://fonts.googleapis.com/css?family=Poiret+One|Josefin+Slab:400,600,700);
+
+body {
+  font-family: 'Josefin Slab', serif;
+  text-align: center;
+  padding: 0px;
+  margin: 0px;
+  background-color: #E8DDCB;
+  color: #031634;
+}
+
+.header {
+  font-size: 96px;
+  padding: 20px;
+}
+
+.header-container {
+  font-family: 'Poiret One', cursive;
+  color: #04AEAD;
+  background-color: #031634
+}
+
+.description {
+  padding-top: 20px;
+  font-size: 14px;
+  width: 800px;
+  margin: auto;
+  padding-bottom: 10px;
+}
+
+label {
+  font-size: 18px;
+  color: #04AEAD;
+}

@@ -1,7 +1,7 @@
 {
   "name": "Heap",
   "description": "Traverse the web",
-  "version": "0.6",
+  "version": "0.75",
   "manifest_version": 2,
   "background": {
     "scripts": ["./assets/js/jquery-2.1.3.min.js", "background.js"]
@@ -21,6 +21,7 @@
 	  }
 	}
   },
+  "options_page": "options.html",
   "chrome_url_overrides" : {
     "newtab": "redirect.html"
   },
