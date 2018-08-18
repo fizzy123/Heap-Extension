@@ -30,20 +30,20 @@ chrome.runtime.onMessage.addListener(function(request, sender) {
 
 var extensionAction = function(){
   chrome.tabs.query({active:true, currentWindow:true}, function(tab){
-	$.get('http://heap.nobr.me/csrf/', function(res) {
+	$.get('https://heap.nobr.me/csrf/', function(res) {
 	  csrftoken = res
 	  var url = tab[0].url
 	  if (url === 'chrome://newtab/') {
 	    url = window.localStorage['fakeUrl']
 	  }
-	  $.post('http://heap.nobr.me/feed/action/', 
+	  $.post('https://heap.nobr.me/feed/action/', 
 		     {url: url},
 		      function(res) {
 		if (res.url) {
 		  if (res.url.match(/^http/)) {
 			chrome.tabs.update({url: res.url});
 		  } else {
-			chrome.tabs.create({url:'http://heap.nobr.me' + res.url});
+			chrome.tabs.create({url:'https://heap.nobr.me' + res.url});
 		  }
 		}
 		checkUrl(tab[0].id, tab[0].url);
@@ -73,12 +73,12 @@ var changeIcon = function(tab) {
 }
 
 var checkUrl = function(tabId, url) {
-  $.get('http://heap.nobr.me/csrf/', function(res) {
+  $.get('https://heap.nobr.me/csrf/', function(res) {
 	csrftoken = res
 	if (url === 'chrome://newtab/') {
 	  url = window.localStorage['fakeUrl']
 	}
-	$.post('http://heap.nobr.me/feed/check_url/', 
+	$.post('https://heap.nobr.me/feed/check_url/', 
 			 {url: url},
 			 function(res) {
 	  if (res.url) {
