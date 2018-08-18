@@ -1,7 +1,7 @@
 {
   "name": "Heap",
   "description": "Traverse the web",
-  "version": "0.76",
+  "version": "0.77",
   "manifest_version": 2,
   "background": {
     "scripts": ["./assets/js/jquery-3.3.1.min.js", "background.js"]
